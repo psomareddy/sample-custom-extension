@@ -1,6 +1,6 @@
 This is a really simple sample java app used to demonstrate the ability to add custom tags to spans delivered through opentelemetry auto instrumentation extension.
 
-## Running simple-java-app locally
+## Build
 simple-java-app is a java application built using gradle. You can build a jar file and run it from the command line (it should work just as well with Java 11 or newer):
 
 ```
@@ -8,6 +8,9 @@ git clone https://github.com/psomareddy/sample-custom-extension.git
 ./gradlew clean build
 ```
 The custom extension jar should be available in the **build/libs/sample-custom-extension.jar** location.
+
+## Test application
+Install the [simple-java-app](https://github.com/psomareddy/simple-java-app) application. This extension will add a custom span tag to the spans produced by the test application without modifying the test application code.
 
 ## Instrument the app to load the custom auto instrumentation extension
 
