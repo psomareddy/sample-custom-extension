@@ -9,9 +9,9 @@ git clone https://github.com/psomareddy/sample-custom-extension.git
 ```
 The custom extension jar should be available in the **build/libs/sample-custom-extension.jar** location.
 
-## Instrument the app with OpenTelemetry Java Auto Instrumentation
+## Instrument the app to load the custom auto instrumentation extension
 
-3. Set the -Dotel.javaagent.extensions property to the path of the custom extension jar- sample-custom-extension.jar . For the simple-java-app, the start application command should now look like this.
+Set the -Dotel.javaagent.extensions property to the path of the custom extension jar- sample-custom-extension.jar . For the simple-java-app, the start application command should now look like this.
 
 ```
 java  -javaagent:/opt/otel/splunk-otel-javaagent.jar  -Dotel.instrumentation.methods.include=com.simple.app.App[getGreeting] -Dotel.javaagent.extensions=/opt/otel/extensions/sample-custom-extension.jar -jar build/libs/*.jar 
