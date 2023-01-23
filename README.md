@@ -6,19 +6,20 @@ sample-custom-extension is a java library built using gradle. You can build a ja
 
 ```
 git clone https://github.com/psomareddy/sample-custom-extension.git
+cd sample-custom-extension
 ./gradlew clean build
 ```
-The custom extension jar should be available in the **build/libs/sample-custom-extension.jar** location.
+The custom extension jar should be available in the **build/libs/sample-custom-extension.jar** location. 
 
 ## Test application
 Install the [simple-java-app](https://github.com/psomareddy/simple-java-app) to test this extension library. This extension will add a custom span tag to the spans produced by the test application without modifying the test application code.
 
 ## Instrument the app to load the custom auto instrumentation extension
 
-Set the -Dotel.javaagent.extensions property to the path of the custom extension jar- sample-custom-extension.jar . For the simple-java-app, the start application command should now look like this.
+Set the -Dotel.javaagent.extensions property to the path of the custom extension jar- sample-custom-extension.jar . For the simple-java-app, the start application command should now look like this. Before running this command, copy the sample-custom-extension.jar file to the simple-java-app home folder. Then change current working directory to the simple-java-app folder.
 
 ```
-java  -javaagent:./splunk-otel-javaagent.jar "-Dotel.instrumentation.methods.include=com.simple.app.App[getGreeting]" -Dotel.javaagent.extensions=/opt/otel/extensions/sample-custom-extension.jar -jar ./build/libs/simple-java-app.jar
+java  -javaagent:./splunk-otel-javaagent.jar "-Dotel.instrumentation.methods.include=com.simple.app.App[getGreeting]" -Dotel.javaagent.extensions=./sample-custom-extension.jar -jar ./build/libs/simple-java-app.jar
 ```
 
 ## Usage
